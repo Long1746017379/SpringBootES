@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BusinessInfoDao">
+
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.BusinessInfo">
+    <id column="business_id" jdbcType="VARCHAR" property="businessId" />
+    <result column="business_original_id" jdbcType="VARCHAR" property="businessOriginalId" />
+    <result column="business_address" jdbcType="VARCHAR" property="businessAddress" />
+    <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+    <result column="business_code" jdbcType="VARCHAR" property="businessCode" />
+    <result column="business_status" jdbcType="VARCHAR" property="businessStatus" />
+    <result column="business_email" jdbcType="VARCHAR" property="businessEmail" />
+    <result column="business_url" jdbcType="VARCHAR" property="businessUrl" />
+    <result column="business_issafety" jdbcType="VARCHAR" property="businessIssafety" />
+    <result column="business_zz_logo" jdbcType="VARCHAR" property="businessZzLogo" />
+    <result column="business_zz_type" jdbcType="VARCHAR" property="businessZzType" />
+    <result column="business_unit_code" jdbcType="VARCHAR" property="businessUnitCode" />
+    <result column="business_head_url" jdbcType="VARCHAR" property="businessHeadUrl" />
+    <result column="business_bg_url" jdbcType="VARCHAR" property="businessBgUrl" />
+    <result column="business_lng_lat" jdbcType="VARCHAR" property="businessLngLat" />
+    <result column="business_type_id" jdbcType="BIGINT" property="businessTypeId" />
+    <result column="province_city_id" jdbcType="BIGINT" property="provinceCityId" />
+    <result column="business_phone" jdbcType="VARCHAR" property="businessPhone" />
+    <result column="operation_user" jdbcType="VARCHAR" property="operationUser" />
+    <result column="operation_time" jdbcType="VARCHAR" property="operationTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    business_id, business_original_id, business_address, business_name, business_code, 
+    business_status, business_email, business_url, business_issafety, business_zz_logo, 
+    business_zz_type, business_unit_code, business_head_url, business_bg_url, business_lng_lat, 
+    business_type_id, province_city_id, business_phone, operation_user, operation_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_info
+    where business_id = #{businessId,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from business_info
+    where business_id = #{businessId,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" keyColumn="business_id" keyProperty="businessId" parameterType="com.example.demo.entity.BusinessInfo" useGeneratedKeys="true">
+    insert into business_info (business_original_id, business_address, 
+      business_name, business_code, business_status, 
+      business_email, business_url, business_issafety, 
+      business_zz_logo, business_zz_type, business_unit_code, 
+      business_head_url, business_bg_url, business_lng_lat, 
+      business_type_id, province_city_id, business_phone, 
+      operation_user, operation_time)
+    values (#{businessOriginalId,jdbcType=VARCHAR}, #{businessAddress,jdbcType=VARCHAR}, 
+      #{businessName,jdbcType=VARCHAR}, #{businessCode,jdbcType=VARCHAR}, #{businessStatus,jdbcType=VARCHAR}, 
+      #{businessEmail,jdbcType=VARCHAR}, #{businessUrl,jdbcType=VARCHAR}, #{businessIssafety,jdbcType=VARCHAR}, 
+      #{businessZzLogo,jdbcType=VARCHAR}, #{businessZzType,jdbcType=VARCHAR}, #{businessUnitCode,jdbcType=VARCHAR}, 
+      #{businessHeadUrl,jdbcType=VARCHAR}, #{businessBgUrl,jdbcType=VARCHAR}, #{businessLngLat,jdbcType=VARCHAR}, 
+      #{businessTypeId,jdbcType=BIGINT}, #{provinceCityId,jdbcType=BIGINT}, #{businessPhone,jdbcType=VARCHAR}, 
+      #{operationUser,jdbcType=VARCHAR}, #{operationTime,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" keyColumn="business_id" keyProperty="businessId" parameterType="com.example.demo.entity.BusinessInfo" useGeneratedKeys="true">
+    insert into business_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="businessOriginalId != null">
+        business_original_id,
+      </if>
+      <if test="businessAddress != null">
+        business_address,
+      </if>
+      <if test="businessName != null">
+        business_name,
+      </if>
+      <if test="businessCode != null">
+        business_code,
+      </if>
+      <if test="businessStatus != null">
+        business_status,
+      </if>
+      <if test="businessEmail != null">
+        business_email,
+      </if>
+      <if test="businessUrl != null">
+        business_url,
+      </if>
+      <if test="businessIssafety != null">
+        business_issafety,
+      </if>
+      <if test="businessZzLogo != null">
+        business_zz_logo,
+      </if>
+      <if test="businessZzType != null">
+        business_zz_type,
+      </if>
+      <if test="businessUnitCode != null">
+        business_unit_code,
+      </if>
+      <if test="businessHeadUrl != null">
+        business_head_url,
+      </if>
+      <if test="businessBgUrl != null">
+        business_bg_url,
+      </if>
+      <if test="businessLngLat != null">
+        business_lng_lat,
+      </if>
+      <if test="businessTypeId != null">
+        business_type_id,
+      </if>
+      <if test="provinceCityId != null">
+        province_city_id,
+      </if>
+      <if test="businessPhone != null">
+        business_phone,
+      </if>
+      <if test="operationUser != null">
+        operation_user,
+      </if>
+      <if test="operationTime != null">
+        operation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="businessOriginalId != null">
+        #{businessOriginalId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAddress != null">
+        #{businessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null">
+        #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null">
+        #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStatus != null">
+        #{businessStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="businessEmail != null">
+        #{businessEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="businessUrl != null">
+        #{businessUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIssafety != null">
+        #{businessIssafety,jdbcType=VARCHAR},
+      </if>
+      <if test="businessZzLogo != null">
+        #{businessZzLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessZzType != null">
+        #{businessZzType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessUnitCode != null">
+        #{businessUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessHeadUrl != null">
+        #{businessHeadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBgUrl != null">
+        #{businessBgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLngLat != null">
+        #{businessLngLat,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTypeId != null">
+        #{businessTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="provinceCityId != null">
+        #{provinceCityId,jdbcType=BIGINT},
+      </if>
+      <if test="businessPhone != null">
+        #{businessPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUser != null">
+        #{operationUser,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <insert id="forEachInsert" parameterType="java.util.List">
+      insert into business_info (business_id, business_original_id, business_address, business_name, business_email, business_lng_lat, business_phone)
+      values
+      <foreach collection="list" item="item" separator="," >
+          (
+            #{item.businessId,jdbcType=VARCHAR},
+            #{item.businessOriginalId,jdbcType=VARCHAR},
+            #{item.businessAddress,jdbcType=VARCHAR},
+            #{item.businessName,jdbcType=VARCHAR},
+            #{item.businessEmail,jdbcType=VARCHAR},
+            #{item.businessLngLat,jdbcType=VARCHAR},
+            #{item.businessPhone,jdbcType=VARCHAR}
+          )
+      </foreach>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.BusinessInfo">
+    update business_info
+    <set>
+      <if test="businessOriginalId != null">
+        business_original_id = #{businessOriginalId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAddress != null">
+        business_address = #{businessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null">
+        business_name = #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null">
+        business_code = #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStatus != null">
+        business_status = #{businessStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="businessEmail != null">
+        business_email = #{businessEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="businessUrl != null">
+        business_url = #{businessUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIssafety != null">
+        business_issafety = #{businessIssafety,jdbcType=VARCHAR},
+      </if>
+      <if test="businessZzLogo != null">
+        business_zz_logo = #{businessZzLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessZzType != null">
+        business_zz_type = #{businessZzType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessUnitCode != null">
+        business_unit_code = #{businessUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessHeadUrl != null">
+        business_head_url = #{businessHeadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBgUrl != null">
+        business_bg_url = #{businessBgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLngLat != null">
+        business_lng_lat = #{businessLngLat,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTypeId != null">
+        business_type_id = #{businessTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="provinceCityId != null">
+        province_city_id = #{provinceCityId,jdbcType=BIGINT},
+      </if>
+      <if test="businessPhone != null">
+        business_phone = #{businessPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUser != null">
+        operation_user = #{operationUser,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        operation_time = #{operationTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where business_id = #{businessId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.BusinessInfo">
+    update business_info
+    set business_original_id = #{businessOriginalId,jdbcType=VARCHAR},
+      business_address = #{businessAddress,jdbcType=VARCHAR},
+      business_name = #{businessName,jdbcType=VARCHAR},
+      business_code = #{businessCode,jdbcType=VARCHAR},
+      business_status = #{businessStatus,jdbcType=VARCHAR},
+      business_email = #{businessEmail,jdbcType=VARCHAR},
+      business_url = #{businessUrl,jdbcType=VARCHAR},
+      business_issafety = #{businessIssafety,jdbcType=VARCHAR},
+      business_zz_logo = #{businessZzLogo,jdbcType=VARCHAR},
+      business_zz_type = #{businessZzType,jdbcType=VARCHAR},
+      business_unit_code = #{businessUnitCode,jdbcType=VARCHAR},
+      business_head_url = #{businessHeadUrl,jdbcType=VARCHAR},
+      business_bg_url = #{businessBgUrl,jdbcType=VARCHAR},
+      business_lng_lat = #{businessLngLat,jdbcType=VARCHAR},
+      business_type_id = #{businessTypeId,jdbcType=BIGINT},
+      province_city_id = #{provinceCityId,jdbcType=BIGINT},
+      business_phone = #{businessPhone,jdbcType=VARCHAR},
+      operation_user = #{operationUser,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=VARCHAR}
+    where business_id = #{businessId,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

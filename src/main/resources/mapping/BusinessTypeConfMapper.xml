@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BusinessTypeConfMapper">
+
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.BusinessTypeConf">
+    <id column="business_type_id" jdbcType="BIGINT" property="businessTypeId" />
+    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    business_type_id, business_type
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_type_conf
+    where business_type_id = #{businessTypeId,jdbcType=BIGINT}
+  </select>
+
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from business_type_conf
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_type_conf
+    where business_type_id = #{businessTypeId,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" keyColumn="business_type_id" keyProperty="businessTypeId" parameterType="com.example.demo.entity.BusinessTypeConf" useGeneratedKeys="true">
+    insert into business_type_conf (business_type)
+    values (#{businessType,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" keyColumn="business_type_id" keyProperty="businessTypeId" parameterType="com.example.demo.entity.BusinessTypeConf" useGeneratedKeys="true">
+    insert into business_type_conf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="businessType != null">
+        business_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <!--批量写入MySQL-->
+    <insert id="writeMysql" parameterType="java.util.List" >
+      insert into business_type_conf (business_type_id, business_type)
+      values
+      <foreach collection="businessTypeConfList" item="item" separator=",">
+          (
+            #{item.businessTypeId,jdbcType=BIGINT},
+            #{item.businessType,jdbcType=VARCHAR}
+          )
+      </foreach>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.BusinessTypeConf">
+    update business_type_conf
+    <set>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where business_type_id = #{businessTypeId,jdbcType=BIGINT}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.BusinessTypeConf">
+    update business_type_conf
+    set business_type = #{businessType,jdbcType=VARCHAR}
+    where business_type_id = #{businessTypeId,jdbcType=BIGINT}
+  </update>
+
+</mapper>
