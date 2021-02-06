@@ -28,9 +28,9 @@ import java.util.Map;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class TestController {
 
+    @ResponseBody
     @PostMapping(value = "/testTwoHeader")
     public Map testTwoHeader(@RequestBody JSONObject jsonObject){
-
         String postJson = "{\"respCode\":\"0000\",\"respDesc\":\"请求成功\",\"list\":[{\"astoreAppName\":null,\"orderNum\":35,\"orderNumFinished\":35,\"orderNumNotFinished\":0,\"avgDeliveryDay\":\"0.06\",\"province\":null,\"name\":\"客户运营平台\"},{\"astoreAppName\":null,\"orderNum\":5,\"orderNumFinished\":1,\"orderNumNotFinished\":4,\"avgDeliveryDay\":\"2.08\",\"province\":null,\"name\":\"掌沃通\"},{\"astoreAppName\":null,\"orderNum\":1,\"orderNumFinished\":0,\"orderNumNotFinished\":1,\"avgDeliveryDay\":null,\"province\":null,\"name\":\"cBSS营业前台\"}],\"listMap\":null}";
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -42,6 +42,7 @@ public class TestController {
     }
 
 
+    @ResponseBody
     @GetMapping(value = "/testProvinceAndSub")
     public JSONArray query() {
         JSONArray jsonArray = new JSONArray();
