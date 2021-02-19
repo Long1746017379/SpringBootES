@@ -19,7 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
         <es.version>7.3.2</es.version>
-        <apache.poi.version>4.0.1</apache.poi.version>
+        <apache.poi.version>3.17</apache.poi.version>
     </properties>
 
     <dependencies>
@@ -143,9 +143,21 @@
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${apache.poi.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+        <!--apache.poi end-->
+
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
