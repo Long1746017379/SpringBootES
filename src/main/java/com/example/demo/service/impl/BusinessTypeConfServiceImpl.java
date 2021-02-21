@@ -122,9 +122,16 @@ public class BusinessTypeConfServiceImpl implements BusinessTypeConfService {
 
                         // 获取一共有多少列
                         int cellNumbers = everyrow.getPhysicalNumberOfCells();
-                        List<String> rowList = new ArrayList<>();
+                        /**
+                         * 获取当前单元格内容的类型
+                         * STRING、NUMERIC、BOOLEAN
+                         */
+                        CellType cellTypeEnum = everyrow.getCell(0).getCellTypeEnum();
+                        CellType cellTypeEnum1 = everyrow.getCell(1).getCellTypeEnum();
+
                         everyrow.getCell(0).setCellType(CellType.STRING);
                         everyrow.getCell(1).setCellType(CellType.STRING);
+
 
                         BusinessTypeConf businessTypeConf = new BusinessTypeConf();
                         businessTypeConf.setBusinessTypeId(Long.valueOf(everyrow.getCell(0).toString()));
