@@ -6,6 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.AstoreApp;
 import com.example.demo.entity.BusinessTypeConf;
 import com.example.demo.entity.OrderNumAndDuration;
+import com.example.demo.entity.User;
+import com.example.demo.entity.abilityplatform.bo.AbilityPlatformBO;
+import com.example.demo.entity.abilityplatform.bo.UNIBSSATTACHEDBean;
+import com.example.demo.entity.abilityplatform.bo.UNIBSSHEADBean;
 import com.example.demo.utils.HttpClientUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,10 +68,11 @@ public class Test {
 //            map.put("ctiy", "001");
 //        }
 //        log.info("{}",map);
-
-//        map.put("avgDay", null);
+//
+//        map.put("avgDay", "123");
 //        String avgDay = map.get("avgDay").toString();
 //        log.info("avgDay：{}", avgDay);
+
 
         String str = "12我爱中国哈哈哈EM345";
         double length = getLength(str);
@@ -77,17 +82,25 @@ public class Test {
             log.info("姓名超出长度", str);
         }
 
+
         BusinessTypeConf businessTypeConf = new BusinessTypeConf();
         businessTypeConf.setBusinessTypeId(1001L);
-        businessTypeConf.setBusinessType("火锅");
-
+        businessTypeConf.setBusinessType("小吃");
         ObjectMapper objectMapper = new ObjectMapper();
+        String stringBusiness = "{\"businessTypeId\":1001,\"businessType\":\"小吃\"}";
+
+        String ss = "{\"respDesc\":111,\"TRANS_ID\":\"222\",\"TIMESTAMP\":\"333\",\"RESP_CODE\":\"444\",\"APP_ID\":\"555\"}";
 
         try {
-            String string = objectMapper.writeValueAsString(businessTypeConf);
-            log.info("{}", string);
-            BusinessTypeConf b = objectMapper.readValue(string, BusinessTypeConf.class);
+//            String string = objectMapper.writeValueAsString(businessTypeConf);
+//            log.info("{}", string);
+
+            BusinessTypeConf b = objectMapper.readValue(stringBusiness, BusinessTypeConf.class);
             log.info("{}", b);
+
+            User user = objectMapper.readValue(ss, User.class);
+            log.info("user：{}", user);
+
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
