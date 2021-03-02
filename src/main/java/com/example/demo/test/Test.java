@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.AstoreApp;
@@ -57,12 +58,43 @@ public class Test {
 //        disposeRspmap(rspMap);
 
 
-        Map<String, Object> map = new HashMap<>();
+//        Map<String, Object> map = new HashMap<>();
+//        if (!map.containsKey("city")){
+//            map.put("ctiy", "001");
+//        }
+//        log.info("{}",map);
 
-        map.put("avgDay", null);
-        String avgDay = map.get("avgDay").toString();
-        log.info("avgDay：{}", avgDay);
+//        map.put("avgDay", null);
+//        String avgDay = map.get("avgDay").toString();
+//        log.info("avgDay：{}", avgDay);
 
+        String str = "12我爱中国哈哈哈EM345";
+        double length = getLength(str);
+        log.info("{}", length);
+        log.info("{}", str.length());
+        if (length > 10){
+            log.info("姓名超出长度", str);
+        }
+
+    }
+
+    public static double getLength(String s) {
+        double valueLength = 0;
+        String chinese = "^[\u4e00-\u9fa5],{0,}$";
+        for (int i = 0; i < s.length(); i++) {
+            // 获取一个字符
+            String temp = s.substring(i, i + 1);
+            // 判断是否为中文字符
+            if (temp.matches(chinese)) {
+                // 中文字符长度为1
+                valueLength += 1;
+            } else {
+                // 其他字符长度为0.5
+                valueLength += 0.5;
+            }
+        }
+        // 进位取整
+        return valueLength;
     }
 
     private static void disposeRspmap(Map<String, OrderNumAndDuration> rspMap) {
