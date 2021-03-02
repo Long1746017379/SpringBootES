@@ -7,6 +7,7 @@ import com.example.demo.entity.AstoreApp;
 import com.example.demo.entity.BusinessTypeConf;
 import com.example.demo.entity.OrderNumAndDuration;
 import com.example.demo.utils.HttpClientUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import lombok.extern.slf4j.Slf4j;
@@ -76,8 +77,27 @@ public class Test {
             log.info("姓名超出长度", str);
         }
 
+        BusinessTypeConf businessTypeConf = new BusinessTypeConf();
+        businessTypeConf.setBusinessTypeId(1001L);
+        businessTypeConf.setBusinessType("火锅");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            String string = objectMapper.writeValueAsString(businessTypeConf);
+            log.info("{}", string);
+            BusinessTypeConf b = objectMapper.readValue(string, BusinessTypeConf.class);
+            log.info("{}", b);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * 获取字符串字符（中文两个字符）
+     * @param s
+     * @return
+     */
     public static double getLength(String s) {
         double valueLength = 0;
         String chinese = "^[\u4e00-\u9fa5],{0,}$";
