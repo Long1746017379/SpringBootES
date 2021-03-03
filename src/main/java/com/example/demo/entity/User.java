@@ -13,16 +13,17 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class User implements Serializable {
+
     private static final long serialVersionUID = 4605139038211278516L;
 
     private String respDesc;
 
-    private String TRANS_ID;
+    private String transId;
 
-    private String TIMESTAMP;
+    private String timesTamp;
 
-    private String RESP_CODE;
+    private String respCode;
 
-    private String APP_ID;
+    private String appId;
 
 }

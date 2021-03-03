@@ -89,7 +89,7 @@ public class Test {
         ObjectMapper objectMapper = new ObjectMapper();
         String stringBusiness = "{\"businessTypeId\":1001,\"businessType\":\"小吃\"}";
 
-        String ss = "{\"respDesc\":111,\"TRANS_ID\":\"222\",\"TIMESTAMP\":\"333\",\"RESP_CODE\":\"444\",\"APP_ID\":\"555\"}";
+        String ss = "{\"respDesc\":111,\"transId\":\"222\",\"timesTamp\":\"333\",\"respCode\":\"444\",\"appId\":\"555\"}";
 
         try {
 //            String string = objectMapper.writeValueAsString(businessTypeConf);
