@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TInstallPersonSyncAbilityplatformFailDao">
+
+    <resultMap id="BaseResultMap"
+               type="com.example.demo.entity.abilityplatform.po.TInstallPersonSyncAbilityplatformFail">
+        <id column="install_person_id" jdbcType="BIGINT" property="installPersonId"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="eparchy_code" jdbcType="VARCHAR" property="eparchyCode"/>
+        <result column="district_code" jdbcType="VARCHAR" property="districtCode"/>
+        <result column="cbss_account" jdbcType="VARCHAR" property="cbssAccount"/>
+        <result column="develop_name" jdbcType="VARCHAR" property="developName"/>
+        <result column="develop_id" jdbcType="VARCHAR" property="developId"/>
+        <result column="source_channel_code" jdbcType="VARCHAR" property="sourceChannelCode"/>
+        <result column="source_channel_name" jdbcType="VARCHAR" property="sourceChannelName"/>
+        <result column="saleman_service_center" jdbcType="VARCHAR" property="salemanServiceCenter"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="timesTamp" jdbcType="VARCHAR" property="timestamp"/>
+        <result column="transId" jdbcType="VARCHAR" property="transid"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <result column="sync_time" jdbcType="TIMESTAMP" property="syncTime"/>
+        <result column="sync_status" jdbcType="INTEGER" property="syncStatus"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        install_person_id, account, phone, `name`, province_code, eparchy_code, district_code,
+        cbss_account, develop_name, develop_id, source_channel_code, source_channel_name,
+        saleman_service_center, `status`, create_time, update_time, role_id, `timesTamp`,
+        transId, token, sync_time, sync_status, note
+    </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_install_person_sync_abilityplatform_fail
+        where install_person_id = #{installPersonId,jdbcType=BIGINT}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_install_person_sync_abilityplatform_fail
+        where install_person_id = #{installPersonId,jdbcType=BIGINT}
+    </delete>
+
+
+    <insert id="insert" keyColumn="install_person_id" keyProperty="installPersonId"
+            parameterType="com.example.demo.entity.abilityplatform.po.TInstallPersonSyncAbilityplatformFail"
+            useGeneratedKeys="true">
+        insert into t_install_person_sync_abilityplatform_fail (account, phone, `name`,
+          province_code, eparchy_code, district_code,
+          cbss_account, develop_name, develop_id,
+          source_channel_code, source_channel_name, saleman_service_center,
+          `status`, create_time, update_time,
+          role_id, `timesTamp`, transId,
+          token, sync_time, sync_status,
+          note)
+        values (#{account,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+          #{provinceCode,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=VARCHAR}, #{districtCode,jdbcType=VARCHAR},
+          #{cbssAccount,jdbcType=VARCHAR}, #{developName,jdbcType=VARCHAR}, #{developId,jdbcType=VARCHAR},
+          #{sourceChannelCode,jdbcType=VARCHAR}, #{sourceChannelName,jdbcType=VARCHAR}, #{salemanServiceCenter,jdbcType=VARCHAR},
+          #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+          #{roleId,jdbcType=VARCHAR}, #{timestamp,jdbcType=VARCHAR}, #{transid,jdbcType=VARCHAR},
+          #{token,jdbcType=VARCHAR}, #{syncTime,jdbcType=TIMESTAMP}, #{syncStatus,jdbcType=INTEGER},
+          #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+    <insert id="insertSelective" keyColumn="install_person_id" keyProperty="installPersonId"
+            parameterType="com.example.demo.entity.abilityplatform.po.TInstallPersonSyncAbilityplatformFail"
+            useGeneratedKeys="true">
+        insert into t_install_person_sync_abilityplatform_fail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account != null">
+                account,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="provinceCode != null">
+                province_code,
+            </if>
+            <if test="eparchyCode != null">
+                eparchy_code,
+            </if>
+            <if test="districtCode != null">
+                district_code,
+            </if>
+            <if test="cbssAccount != null">
+                cbss_account,
+            </if>
+            <if test="developName != null">
+                develop_name,
+            </if>
+            <if test="developId != null">
+                develop_id,
+            </if>
+            <if test="sourceChannelCode != null">
+                source_channel_code,
+            </if>
+            <if test="sourceChannelName != null">
+                source_channel_name,
+            </if>
+            <if test="salemanServiceCenter != null">
+                saleman_service_center,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="timestamp != null">
+                `timesTamp`,
+            </if>
+            <if test="transid != null">
+                transId,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="syncTime != null">
+                sync_time,
+            </if>
+            <if test="syncStatus != null">
+                sync_status,
+            </if>
+            <if test="note != null">
+                note,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="eparchyCode != null">
+                #{eparchyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtCode != null">
+                #{districtCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cbssAccount != null">
+                #{cbssAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="developName != null">
+                #{developName,jdbcType=VARCHAR},
+            </if>
+            <if test="developId != null">
+                #{developId,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceChannelCode != null">
+                #{sourceChannelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceChannelName != null">
+                #{sourceChannelName,jdbcType=VARCHAR},
+            </if>
+            <if test="salemanServiceCenter != null">
+                #{salemanServiceCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="transid != null">
+                #{transid,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="syncTime != null">
+                #{syncTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="syncStatus != null">
+                #{syncStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null">
+                #{note,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.example.demo.entity.abilityplatform.po.TInstallPersonSyncAbilityplatformFail">
+        update t_install_person_sync_abilityplatform_fail
+        <set>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                province_code = #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="eparchyCode != null">
+                eparchy_code = #{eparchyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtCode != null">
+                district_code = #{districtCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cbssAccount != null">
+                cbss_account = #{cbssAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="developName != null">
+                develop_name = #{developName,jdbcType=VARCHAR},
+            </if>
+            <if test="developId != null">
+                develop_id = #{developId,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceChannelCode != null">
+                source_channel_code = #{sourceChannelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceChannelName != null">
+                source_channel_name = #{sourceChannelName,jdbcType=VARCHAR},
+            </if>
+            <if test="salemanServiceCenter != null">
+                saleman_service_center = #{salemanServiceCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp != null">
+                `timesTamp` = #{timestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="transid != null">
+                transId = #{transid,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="syncTime != null">
+                sync_time = #{syncTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="syncStatus != null">
+                sync_status = #{syncStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where install_person_id = #{installPersonId,jdbcType=BIGINT}
+    </update>
+
+
+    <update id="updateByPrimaryKey"
+            parameterType="com.example.demo.entity.abilityplatform.po.TInstallPersonSyncAbilityplatformFail">
+        update t_install_person_sync_abilityplatform_fail
+        set account = #{account,jdbcType=VARCHAR},
+          phone = #{phone,jdbcType=VARCHAR},
+          `name` = #{name,jdbcType=VARCHAR},
+          province_code = #{provinceCode,jdbcType=VARCHAR},
+          eparchy_code = #{eparchyCode,jdbcType=VARCHAR},
+          district_code = #{districtCode,jdbcType=VARCHAR},
+          cbss_account = #{cbssAccount,jdbcType=VARCHAR},
+          develop_name = #{developName,jdbcType=VARCHAR},
+          develop_id = #{developId,jdbcType=VARCHAR},
+          source_channel_code = #{sourceChannelCode,jdbcType=VARCHAR},
+          source_channel_name = #{sourceChannelName,jdbcType=VARCHAR},
+          saleman_service_center = #{salemanServiceCenter,jdbcType=VARCHAR},
+          `status` = #{status,jdbcType=INTEGER},
+          create_time = #{createTime,jdbcType=TIMESTAMP},
+          update_time = #{updateTime,jdbcType=TIMESTAMP},
+          role_id = #{roleId,jdbcType=VARCHAR},
+          `timesTamp` = #{timestamp,jdbcType=VARCHAR},
+          transId = #{transid,jdbcType=VARCHAR},
+          token = #{token,jdbcType=VARCHAR},
+          sync_time = #{syncTime,jdbcType=TIMESTAMP},
+          sync_status = #{syncStatus,jdbcType=INTEGER},
+          note = #{note,jdbcType=VARCHAR}
+        where install_person_id = #{installPersonId,jdbcType=BIGINT}
+  </update>
+
+
+</mapper>

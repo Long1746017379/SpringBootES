@@ -73,7 +73,6 @@ public class Test {
 //        String avgDay = map.get("avgDay").toString();
 //        log.info("avgDay：{}", avgDay);
 
-
         String str = "12我爱中国哈哈哈EM345";
         double length = getLength(str);
         log.info("{}", length);
