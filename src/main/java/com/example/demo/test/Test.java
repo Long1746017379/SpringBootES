@@ -17,10 +17,8 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 
 import static com.example.demo.utils.oss.AliyunOSSUtil.RSP_CODE_SUCCESS;
 
@@ -31,7 +29,7 @@ import static com.example.demo.utils.oss.AliyunOSSUtil.RSP_CODE_SUCCESS;
  */
 @Slf4j
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 //        List<BusinessTypeConf> list = new ArrayList<>();
 //
@@ -80,7 +78,6 @@ public class Test {
         if (length > 10){
             log.info("姓名超出长度", str);
         }
-
 
         BusinessTypeConf businessTypeConf = new BusinessTypeConf();
         businessTypeConf.setBusinessTypeId(1001L);
